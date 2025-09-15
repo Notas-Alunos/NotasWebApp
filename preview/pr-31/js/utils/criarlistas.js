@@ -1,4 +1,4 @@
-const url = "https://68b2430aa860fe41fd60a6c1.mockapi.io/";
+const url = "https://68c0af890b196b9ce1c4d908.mockapi.io/";
 const endpoint = url + "items";
 
 const area = document.getElementById("areaTitulos");
@@ -50,26 +50,6 @@ function excluirApiItem(id, descricao) {
 
 function renderizarTitulo() {
   area.innerHTML = ""; 
-  
-  titulos.forEach(titulo => {
-    const div = document.createElement("div");
-    div.classList.add("bloco");
-
-    const link = document.createElement("a");
-    link.textContent = titulo;
-    link.href = `bloco.html?titulo=${encodeURIComponent(titulo)}`;
-    link.classList.add("titulo-link");
-
-    const btnExcluir = document.createElement("button");
-    btnExcluir.textContent = "Excluir";
-    btnExcluir.classList.add("btn-excluir");
-    btnExcluir.onclick = () => excluirLocalStorageTitulo(titulo);
-
-    div.appendChild(link);
-    div.appendChild(btnExcluir);
-    area.appendChild(div);
-  });
-
  
   fetch(endpoint)
     .then(response => {
