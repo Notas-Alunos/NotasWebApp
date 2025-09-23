@@ -1,44 +1,42 @@
-const url = "https://68c0af890b196b9ce1c4d908.mockapi.io/";
-const endpoint = url + "items";
+const url = "https://notas-api-qvzz.onrender.com";
+const endpointItems = url + "/usuarios";
 
 const area = document.getElementById("areaTitulos");
-area.innerHTML = "";
-
-let titulos = JSON.parse(localStorage.getItem("titulos")) || [];
+//area.innerHTML = "";
 
 
-function salvarTitulos() {
-  localStorage.setItem("titulos", JSON.stringify(titulos));
+function criarItem() {
+  const novoItem = document.getElementById("conteudo").innerText;
+console.log(novoItem);
+
+  const novoUsuario = {
+    "descricao": novoItem,
+    "dataLimite": "2025-09-23T00:25:34.663Z",
+    "usuarioId": 1
+  };
+
+  fetch(
+    endpointItems,
+    {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json" // indicando que está enviando JSON
+      },
+      body: JSON.stringify(novoUsuario)
+     },
+  )
+    .then(response => {
+      if (!response.ok) throw new Error("Erro ao excluir");
+      renderizarTitulo();
+    })
+    .catch(error => console.error(error));
 }
-
-
-function criarTitulo() {
-  const nome = prompt("Digite o Título");
-  if (!nome) return;
-
-  if (titulos.includes(nome)) {
-    alert("Este título já existe!");
-    return;
-  }
-  titulos.push(nome);
-  salvarTitulos();
-  renderizarTitulo();
-}
-
-
-function excluirLocalStorageTitulo(nome) {
-  if (confirm(`Deseja excluir "${nome}"?`)) {
-    titulos = titulos.filter(t => t !== nome);
-    localStorage.removeItem(`bloco_${nome}`);
-    salvarTitulos();
-    renderizarTitulo();
-  }
-}
-
 
 function excluirApiItem(id, descricao) {
   if (confirm(`Deseja excluir "${descricao}" da API?`)) {
-    fetch(endpoint + "/" + id, { method: "DELETE" })
+    let urlFinal = endpointItems + "/" + id;
+
+    fetch(urlFinal, { method: "DELETE" })
       .then(response => {
         if (!response.ok) throw new Error("Erro ao excluir");
         renderizarTitulo();
@@ -49,9 +47,9 @@ function excluirApiItem(id, descricao) {
 
 
 function renderizarTitulo() {
-  area.innerHTML = ""; 
+  //area.innerHTML = ""; 
  
-  fetch(endpoint)
+  fetch(endpointItems)
     .then(response => {
       if (!response.ok) {
         throw new Error("Erro na requisição: " + response.status);
@@ -79,10 +77,8 @@ function renderizarTitulo() {
       });
     })
     .catch(error => {
-      console.error("Erro:", error);
+      //console.error("Erro:", error);
     });
 }
 
 renderizarTitulo();
-
-
