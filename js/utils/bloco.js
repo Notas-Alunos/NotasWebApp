@@ -1,7 +1,7 @@
 const params = new URLSearchParams(window.location.search);
 const titulo = params.get('titulo');
 const tituloElem = document.getElementById('tituloLista');
-if (titulo) tituloElem.textContent = `📒 ${titulo}`;
+if (titulo) tituloElem.textContent = ` 📌  ${titulo}`;
 
 const textAreaElements = document.getElementById('conteudo');
 
@@ -10,15 +10,6 @@ function salvar() {
   alert("Anotação salva!");
   window.location.href = "/telaNotas/listas.html"
   
-}
-
-function editar() {
-  if (textAreaElements.getAttribute('contenteditable') === 'false') {
-    textAreaElements.setAttribute('contenteditable', 'true')
-  }
-  else {
-    textAreaElements.setAttribute('contenteditable', 'false')
-  }
 }
 
 function carregar() {

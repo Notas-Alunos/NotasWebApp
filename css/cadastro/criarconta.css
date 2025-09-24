@@ -1,102 +1,166 @@
-/* ====== Estilo Tela de Cadastro / Nova Senha ====== */
+:root {
+  /* ===== PALETA BASE ===== */
+  --bg: #f9fafc;
+  --card-bg: #fff;
+  --border: #ddd;
+  --text: #222;
+  --muted: #555;
+
+  /* ===== CORES DESTAQUE ===== */
+  --primary: #6c5ce7;
+  --primary-dark: #5849e7;
+  --danger: #e74c3c;
+  --danger-dark: #c0392b;
+
+  /* ===== SOMBRAS ===== */
+  --shadow: 0 10px 25px rgba(0,0,0,0.1);
+  --shadow-strong: 0 12px 28px rgba(0,0,0,0.15);
+}
 
 body {
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-  background: #f0f2f5;
+  background: var(--bg);
+  color: var(--text);
   display: flex;
   justify-content: center;
   align-items: center;
   height: 100vh;
   margin: 0;
+  transition: background 0.3s, color 0.3s;
 }
 
+/* ===== Tela de cadastro / nova senha ===== */
 .reset-box {
-  background-color: #fff;
-  padding: 30px 35px;
-  border-radius: 15px;
-  box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+  background-color: var(--card-bg);
+  padding: 35px 40px;
+  border-radius: 16px;
+  box-shadow: var(--shadow);
   width: 380px;
   text-align: center;
+  transition: background 0.3s, box-shadow 0.3s;
 }
 
 .logo {
-  width: 60px;
-  height: 60px;
-  margin: 0 auto 15px;
-  background: linear-gradient(135deg, #6C5CE7, #8b7ef5);
+  width: 70px;
+  height: 70px;
+  margin: 0 auto 18px;
+  background: linear-gradient(135deg, var(--primary), var(--primary-dark));
   border-radius: 50%;
   display: flex;
   justify-content: center;
   align-items: center;
   color: #fff;
   font-weight: 700;
-  font-size: 22px;
+  font-size: 24px;
+  box-shadow: 0 4px 12px rgba(108, 92, 231, 0.4);
 }
 
 h2 {
   margin-bottom: 25px;
-  font-size: 22px;
+  font-size: 24px;
   font-weight: 700;
-  color: #111;
+  color: var(--text);
 }
 
 .input-group {
-  margin-bottom: 18px;
+  margin-bottom: 20px;
   text-align: left;
+  width: 100%;
 }
 
 .input-group label {
   display: block;
   margin-bottom: 6px;
   font-size: 14px;
-  color: #555;
+  color: var(--muted);
+  font-weight: 500;
 }
 
 .input-group input {
   width: 100%;
   padding: 12px 15px;
   border-radius: 10px;
-  border: 1px solid #ddd;
-  font-size: 14px;
+  border: 1px solid var(--border);
+  font-size: 15px;
   outline: none;
-  transition: 0.2s;
+  transition: 0.25s;
+  background: var(--card-bg);
+  color: var(--text);
 }
 
 .input-group input:focus {
-  border-color: #6C5CE7;
+  border-color: var(--primary);
   box-shadow: 0 0 0 3px rgba(108,92,231,0.2);
-  background-color: #fff;
+  background-color: var(--card-bg);
 }
 
 .btn {
   width: 100%;
-  padding: 12px;
-  background: linear-gradient(135deg, #6C5CE7, #5849e7);
+  padding: 13px;
+  background: linear-gradient(135deg, var(--primary), var(--primary-dark));
   color: #fff;
   border: none;
-  border-radius: 10px;
+  border-radius: 12px;
   font-weight: 600;
-  font-size: 15px;
+  font-size: 16px;
   cursor: pointer;
   margin-top: 10px;
-  transition: 0.2s;
+  transition: transform 0.2s, box-shadow 0.2s;
+  box-shadow: 0 4px 12px rgba(108, 92, 231, 0.4);
 }
 
 .btn:hover {
-  opacity: 0.9;
-  transform: translateY(-2px);
+  transform: translateY(-2px) scale(1.02);
+  box-shadow: 0 6px 16px rgba(108, 92, 231, 0.55);
 }
 
 .extra-links {
-  margin-top: 15px;
+  margin-top: 18px;
 }
 
 .extra-links a {
-  color: #6C5CE7;
+  color: var(--primary);
   text-decoration: none;
   font-size: 14px;
+  font-weight: 500;
+  transition: color 0.2s;
 }
 
 .extra-links a:hover {
   text-decoration: underline;
+  color: var(--primary-dark);
+}
+
+/* ===== Dark Mode ===== */
+body.dark {
+  --bg: #121212;
+  --card-bg: #1e1e1e;
+  --border: #333;
+  --text: #e0e0e0;
+  --muted: #aaa;
+  --shadow: 0 12px 28px rgba(0,0,0,0.6);
+}
+
+body.dark .logo {
+  background: linear-gradient(135deg, #8b7ef5, var(--primary));
+  box-shadow: 0 4px 14px rgba(108, 92, 231, 0.6);
+}
+
+body.dark .input-group input {
+  background: var(--card-bg);
+  color: var(--text);
+  border-color: var(--border);
+}
+
+body.dark .reset-box {
+  background: var(--card-bg);
+  box-shadow: var(--shadow);
+}
+
+/* ===== Responsivo ===== */
+@media (max-width: 420px) {
+  .reset-box {
+    width: 90%;
+    padding: 25px 20px;
+  }
 }
