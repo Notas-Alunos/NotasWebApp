@@ -3,72 +3,65 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="stylesheet" href="../css/cadastro/criarconta.css">
+<link rel="stylesheet" href="../css/cadastro/senha.css">
+<script src="../js/auth/senha.js" defer></script>
+<script src="../js/utils/modoescuroeclaro.js"></script>
+
+
 <title>Criação de Senha</title>
 </head>
 <body>
-<div class="reset-box">
+  <div class="reset-box">
+    <span class="dark-toggle" onclick="toggleDark()">🌙</span>
     <h2>✅ Criação de Senha</h2>
-    <form onsubmit="return validarCadastro()">
-        <div class="input-group">
-            <label for="senha">Senha</label>
-            <input type="password" id="senha" placeholder="Digite sua senha" required>
+
+    <form id="form-senha">
+      <div class="input-group">
+        <label for="senha">Senha</label>
+        <input type="password" id="senha" placeholder="Digite sua senha" required>
+      </div>
+
+      <div class="input-group">
+        <label for="confirmarSenha">Confirmar Senha</label>
+        <input type="password" id="confirmarSenha" placeholder="Confirme sua senha" required>
+      </div>
+
+      <div class="checks" aria-live="polite">
+        <div id="item-especial" class="check-item fail">
+          <div class="symbol">✗</div>
+          <div>Tem caracter especial</div>
         </div>
 
-        <div class="input-group">
-            <label for="confirmarSenha">Confirmar Senha</label>
-            <input type="password" id="confirmarSenha" placeholder="Confirme sua senha" required>
+        <div id="item-maiuscula" class="check-item fail">
+          <div class="symbol">✗</div>
+          <div>Tem letra maiúscula</div>
         </div>
-        <!-- Grupo de termos -->
-<div class="chek">
-    <input type="checkbox" id="aceito1" required>
-    <label for="aceito1">
-      <i class="fa-solid fa-check"></i>
-      Aceito os termos e condições
-    </label>
-  </div>
-  
-  <div class="chek">
-    <input type="checkbox" id="nao1">
-    <label for="nao1">
-      <i class="fa-solid fa-xmark"></i>
-      Não aceito os termos
-    </label>
-  </div>
-  
-  <div class="chek">
-    <input type="checkbox" id="aceito2">
-    <label for="aceito2">
-      <i class="fa-solid fa-check"></i>
-      Aceito receber novidades por e-mail
-    </label>
-  </div>
-  
-  <div class="chek">
-    <input type="checkbox" id="nao2">
-    <label for="nao2">
-      <i class="fa-solid fa-xmark"></i>
-      Não quero receber novidades
-    </label>
-  </div>
-  
 
-        
-        
-        <button type="submit" class="btn">Cadastrar</button>
+        <div id="item-numero" class="check-item fail">
+          <div class="symbol">✗</div>
+          <div>Tem número</div>
+        </div>
+
+        <div id="item-tamanho" class="check-item fail">
+          <div class="symbol">✗</div>
+          <div>Mínimo 8 caracteres</div>
+        </div>
+
+        <div id="item-match" class="check-item fail" style="margin-top:8px;">
+          <div class="symbol">✗</div>
+          <div>Senhas coincidem</div>
+        </div>
+      </div>
+
+      <div class="btn-wrap">
+        <button id="cadastrar"><a href="../index.html">Cadastrar</a></button>
+      </div>
+
+      <div class="footer muted">
+        Já tem uma conta? <a href="../index.html">Login</a>
+      </div>
     </form>
-
-    <div class="extra-links">
-        <a href="../index.html">Já tem uma conta? Login</a>
-    </div>
+  </div>
 </div>
-
-<script src="../js/auth/criarconta.js"></script>
-
-
-
 </body>
-
-
-
 </html>
