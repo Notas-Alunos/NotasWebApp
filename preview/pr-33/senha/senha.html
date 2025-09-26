@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="../css/cadastro/criarconta.css">
+<title>Criação de Senha</title>
+</head>
+<body>
+<div class="reset-box">
+    <h2>✅ Criação de Senha</h2>
+    <form onsubmit="return validarCadastro()">
+        <div class="input-group">
+            <label for="senha">Senha</label>
+            <input type="password" id="senha" placeholder="Digite sua senha" required>
+        </div>
+
+        <div class="input-group">
+            <label for="confirmarSenha">Confirmar Senha</label>
+            <input type="password" id="confirmarSenha" placeholder="Confirme sua senha" required>
+        </div>
+        <!-- Grupo de termos -->
+<div class="chek">
+    <input type="checkbox" id="aceito1" required>
+    <label for="aceito1">
+      <i class="fa-solid fa-check"></i>
+      Aceito os termos e condições
+    </label>
+  </div>
+  
+  <div class="chek">
+    <input type="checkbox" id="nao1">
+    <label for="nao1">
+      <i class="fa-solid fa-xmark"></i>
+      Não aceito os termos
+    </label>
+  </div>
+  
+  <div class="chek">
+    <input type="checkbox" id="aceito2">
+    <label for="aceito2">
+      <i class="fa-solid fa-check"></i>
+      Aceito receber novidades por e-mail
+    </label>
+  </div>
+  
+  <div class="chek">
+    <input type="checkbox" id="nao2">
+    <label for="nao2">
+      <i class="fa-solid fa-xmark"></i>
+      Não quero receber novidades
+    </label>
+  </div>
+  
+
+        
+        
+        <button type="submit" class="btn">Cadastrar</button>
+    </form>
+
+    <div class="extra-links">
+        <a href="../index.html">Já tem uma conta? Login</a>
+    </div>
+</div>
+
+<script src="../js/auth/criarconta.js"></script>
+
+
+
+</body>
+
+
+
+</html>
