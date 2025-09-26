@@ -9,7 +9,10 @@
   --danger: #e74c3c;
   --shadow: 0 10px 25px rgba(0,0,0,0.08);
 }
-
+a{
+  text-decoration: none;
+  color: white;
+}
 body {
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   background: var(--bg);
