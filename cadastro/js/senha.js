@@ -22,6 +22,7 @@ function setState(el, ok){
   }
 }
 
+
 function validar(){
   const s = senhaInput.value;
   const regras = {

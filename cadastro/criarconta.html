@@ -11,7 +11,7 @@
 <body>
   <div class="reset-box">
     <span class="dark-toggle" onclick="toggleDark()">🌙</span>
-    <h2>Criar Conta</h2>
+    <h2>✅ Criar Conta</h2>
     <form onsubmit="return validarCadastro()">
       <div class="input-group">
         <label for="nome">Nome Completo</label>
@@ -22,8 +22,9 @@
         <label for="email">Email</label>
         <input type="email" id="email" placeholder="Digite seu email" required>
       </div>
+      <button type="button" class="btn" id="botao">Continuar</button>
+
    
-      <button type="submit" class="btn"><a href="senha.html">Continuar</a></button>
     </form>
 
     <div class="extra-links">
@@ -31,8 +32,10 @@
     </div>
   </div>
 
-  <script src="../js/auth/criarconta.js"></script>
-  <script src="../js/utils/modoescuroeclaro.js"></script>
+  <script src="../js/modoescuroeclaro.js"></script>
+  <script src="../js/criarlistas.js"></script>
+  <script src="../js/global.js"></script>
+  <script src="js/criarconta.js"></script>
   
 </body>
 
