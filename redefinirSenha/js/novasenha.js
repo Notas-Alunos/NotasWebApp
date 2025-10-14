@@ -1,14 +1,27 @@
 document.addEventListener('DOMContentLoaded', () => {
   const novaSenhaForm = document.getElementById('novaSenhaForm');
 
-  novaSenhaForm.addEventListener('submit', function(e){
+  if (!novaSenhaForm) return;
+
+  novaSenhaForm.addEventListener('submit', (e) => {
     e.preventDefault();
 
-    const email = document.getElementById('email').value;
-    const novaSenha = document.getElementById('novaSenha').value;
-    const confirmar = document.getElementById('confirmarSenha').value;
+    const emailInput = document.getElementById('email');
+    const novaSenhaInput = document.getElementById('novaSenha');
+    const confirmarInput = document.getElementById('confirmarSenha');
 
-    if(novaSenha !== confirmar){
+    if (!emailInput || !novaSenhaInput || !confirmarInput) return;
+
+    const email = emailInput.value.trim();
+    const novaSenha = novaSenhaInput.value.trim();
+    const confirmar = confirmarInput.value.trim();
+
+    if (email === "" || novaSenha === "" || confirmar === "") {
+      alert("Por favor, preencha todos os campos!");
+      return;
+    }
+
+    if (novaSenha !== confirmar) {
       alert("As senhas não coincidem!");
       return;
     }
@@ -18,6 +31,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
     alert("Senha redefinida com sucesso!");
     window.location.href = "../index.html";
-
   });
 });
+
