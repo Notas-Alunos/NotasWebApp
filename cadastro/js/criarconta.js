@@ -1,6 +1,7 @@
 const nomeInput = document.getElementById('nome');
 const emailInput = document.getElementById('email');
 const cadastrarBotao = document.getElementById('createAccount');
+const symbolSenha = document.getElementById("symbol");
 
 const passwordInput = document.getElementById('password');
 const confirmaInput = document.getElementById('confirmarSenha');
@@ -14,11 +15,22 @@ const items = {
 };
 
 
+function itemSenhaOk(idDoElemento) {
+    let elemento = document.getElementById(idDoElemento);
+    let simboloCheck = '<i class="fa-solid fa-check" style="color: green;"></i>';
+    elemento.innerHTML = simboloCheck;
+}
+
+function itemSenhaFalha(idDoElemento) {
+    let elemento = document.getElementById(idDoElemento);
+    let simboloCheck = '<i class="fa-solid fa-xmark" style="color: red;"></i>';
+    elemento.innerHTML =  simboloCheck;
+}
 
 cadastrarBotao.addEventListener('click', function (event) {
-    console.log("Clicou no botão");
-    let estadoSenha = todosItensOk();
     event.preventDefault();
+    let estadoSenha = todosItensOk();
+    
     const nome = nomeInput.value;
     const email = emailInput.value;
     const senha = passwordInput.value;
@@ -30,8 +42,6 @@ cadastrarBotao.addEventListener('click', function (event) {
 
     if (estadoSenha && validateEmail(email) && nome.length > 0) {
         cadastrar(dados);
-    } else {
-        alert("Por favor, verifique os dados inseridos.");
     }
 
 }
@@ -63,28 +73,29 @@ function cadastrar(usuario) {
         });
 }
 
+function validarSenha() {
+    const senhaText = passwordInput.value;
+    const confirmarSenha = confirmaInput.value;
+    let senhasCoincidem = senhaText == confirmarSenha;
+    let temCaracterEspecial = /[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]/.test(senhaText);
+    console.log("passou por aqui", temCaracterEspecial);
+    if (senhasCoincidem) {
+        itemSenhaOk("senhasIguais");
+    } else {
+        itemSenhaFalha("senhasIguais");
+    }
+    let temMaiuscula = /[A-ZÀ-Ý]/.test(senhaText);
+    let temNumero = /\d/.test(senhaText);
+    let tem8Caracters = senhaText.length >= 8;
+    // atualizaCamposSenha(regras);
+}
 
-
-function validar() {
-    const s = passwordInput.value;
-    const regras = {
-        especial: /[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]/.test(s),
-        maiuscula: /[A-ZÀ-Ý]/.test(s),
-        numero: /\d/.test(s),
-        tamanho: s.length >= 8,
-        match: s.length > 0 && s === confirmaInput.value
-    };
-
+function atualizaCamposSenha(regras) {
     setState(items.especial, regras.especial);
     setState(items.maiuscula, regras.maiuscula);
     setState(items.numero, regras.numero);
     setState(items.tamanho, regras.tamanho);
-    setState(items.match, regras.match);
-
-    // for (let i = 0; i < Object.keys(items).length; i++){
-    //   console.log(Object.values(items)[i].classList.contains('ok'));
-    // }
-
+    setState(items.confirmarSenhaIgualSenha, regras.confirmarSenhaIgualSenha);
 }
 
 function validateEmail(email) {
@@ -93,28 +104,21 @@ function validateEmail(email) {
 }
 
 function todosItensOk() {
-    return Object.values(items).every(item => item.classList.contains('ok'));
+    //TODO: validar se o nome do candango tem pelo menos 2 nomes
+
+    const isEmailok = validateEmail(emailInput.value)
+    const isPasswordOk = 
+    console.log("email ok", isEmailok)
 }
 
-
-function setState(el, ok) {
+function setState(elemento, ok) {
     if (ok) {
-        el.classList.remove('fail');
-        el.classList.add('ok');
-        el.querySelector('.symbol').textContent = '✓';
-
-
+        elemento.classList.remove('fail');
+        // el.classList.add('ok');
+        elemento.querySelector('.symbol').textContent = '✓';
     } else {
-        el.classList.remove('ok');
-        el.classList.add('fail');
-        el.querySelector('.symbol').textContent = '✗';
-
-
-
-
+        // el.classList.remove('ok');
+        elemento.classList.add('fail');
+        elemento.querySelector('.symbol').textContent = '✗';
     }
 }
-
-passwordInput.addEventListener('input', validar);
-confirmaInput.addEventListener('input', validar);
-validar();

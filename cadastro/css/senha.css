@@ -62,12 +62,6 @@
     transform: scale(1.1);
   }
   
-  
- 
-  
-  
-  
-  
   .reset-box h2 {
     margin-bottom: 20px;
     font-size: 22px;
@@ -120,14 +114,6 @@
   .check-item .symbol {
     font-size: 18px;
     font-weight: bold;
-  }
-  
-  .fail .symbol {
-    color: var(--danger);
-  }
-  
-  .ok .symbol {
-    color: green;
   }
   
   .btn-wrap {
