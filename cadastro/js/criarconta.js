@@ -14,14 +14,13 @@ const items = {
     match: document.getElementById('item-match')
 };
 
-
-function itemSenhaOk(idDoElemento) {
+function inserirSimboloOk(idDoElemento) {
     let elemento = document.getElementById(idDoElemento);
     let simboloCheck = '<i class="fa-solid fa-check" style="color: green;"></i>';
     elemento.innerHTML = simboloCheck;
 }
 
-function itemSenhaFalha(idDoElemento) {
+function inserirXnoElemento(idDoElemento) {
     let elemento = document.getElementById(idDoElemento);
     let simboloCheck = '<i class="fa-solid fa-xmark" style="color: red;"></i>';
     elemento.innerHTML =  simboloCheck;
@@ -78,15 +77,35 @@ function validarSenha() {
     const confirmarSenha = confirmaInput.value;
     let senhasCoincidem = senhaText == confirmarSenha;
     let temCaracterEspecial = /[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]/.test(senhaText);
-    console.log("passou por aqui", temCaracterEspecial);
-    if (senhasCoincidem) {
-        itemSenhaOk("senhasIguais");
+    if (temCaracterEspecial) {
+        inserirSimboloOk("temCaracterEspecial");
     } else {
-        itemSenhaFalha("senhasIguais");
+        inserirXnoElemento("temCaracterEspecial");
+    }
+    console.log("passou por aqui", temCaracterEspecial);
+    if (senhasCoincidem && senhaText != null) {
+        inserirSimboloOk("senhasIguais");
+    } else {
+        inserirXnoElemento("senhasIguais");
     }
     let temMaiuscula = /[A-ZÀ-Ý]/.test(senhaText);
+    if (temMaiuscula) {
+       inserirSimboloOk("letraMaiscula")
+    } else {
+        inserirXnoElemento("letraMaiscula")
+    }
     let temNumero = /\d/.test(senhaText);
+    if (temNumero) {
+        inserirSimboloOk("temNumero");
+    } else {
+        inserirXnoElemento("temNumero");
+    }
     let tem8Caracters = senhaText.length >= 8;
+    if (tem8Caracters) {
+        inserirSimboloOk("minimo8c");
+    } else {
+        inserirXnoElemento("minimo8c")
+    }
     // atualizaCamposSenha(regras);
 }
 
